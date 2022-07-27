@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Article;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'pseudo' => $this->faker->name(),
+            'email' => $this->faker->email(),
+            'content' => $this->faker->text(2000),
+            'article_id' => Article::inRandomOrder()->first(),
         ];
     }
 }
