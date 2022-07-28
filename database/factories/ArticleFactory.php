@@ -21,6 +21,7 @@ class ArticleFactory extends Factory
             'user_id' => User::inRandomOrder()->first(),
             'title' => $this->faker->unique()->sentence(),
             'content' => $this->faker->text(5000),
+            'created_at' => $this->faker->dateTimeBetween('-2month')
         ];
     }
 }

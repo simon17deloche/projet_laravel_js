@@ -16,7 +16,8 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $articles = Article::paginate(10);
+        //withCount('comments')
+        $articles = Article::latest()->paginate();
         return view('home', ['articles' => $articles]);
     }
 }
