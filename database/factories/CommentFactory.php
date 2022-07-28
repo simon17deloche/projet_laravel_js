@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Article;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,11 +18,19 @@ class CommentFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'pseudo' => $this->faker->name(),
-            'email' => $this->faker->email(),
-            'content' => $this->faker->text(2000),
-            'article_id' => Article::inRandomOrder()->first(),
-        ];
+        if (rand(0, 1) == 1) {
+            return [
+                'pseudo' => $this->faker->name(),
+                'email' => $this->faker->email(),
+                'content' => $this->faker->text(2000),
+                'article_id' => Article::inRandomOrder()->first(),
+            ];
+        } else {
+            return [
+                'user_id' => User::inRandomOrder()->first(),
+                'content' => $this->faker->text(2000),
+                'article_id' => Article::inRandomOrder()->first(),
+            ];
+        }
     }
 }
