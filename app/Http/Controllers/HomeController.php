@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -15,8 +16,7 @@ class HomeController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $articles = Article::all();
-
+        $articles = Article::paginate(10);
         return view('home', ['articles' => $articles]);
     }
 }
