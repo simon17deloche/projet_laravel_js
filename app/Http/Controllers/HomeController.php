@@ -18,7 +18,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //withCount('comments')
         $articles = Article::withCount('comments')->latest()->paginate();
         return view('home',['articles' => $articles]);
     }
