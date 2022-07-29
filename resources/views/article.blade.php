@@ -4,7 +4,6 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h1 class="text-6xl text-center mb-14">{{ $article->title }}</h1>
-                    <h2>{{ $article->user }}</h2>
                     <p class="bg-gray-100 mb-8 rounded-lg group block rounded-lg p-6 text-gray-800 mb-4 text-xl">{{ $article->content }}</p>
                 </div>
             </div>
