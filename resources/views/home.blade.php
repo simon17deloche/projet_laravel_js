@@ -10,7 +10,8 @@
                         <h1 class="text-2xl"> Titre de l'Article : {{ $article->title }}</h1>
                         <hr><br>
                         <p class="text-gray-100; mb-4">{{ (Str::limit($article->content, 500)) }}</p>
-                        <h3>Nombre de commentaires sur cet article : {{ $article->comments_count }}</h3>
+                        <h3 class="text-left text-blue-600">Nombre de commentaires sur cet article : {{ $article->comments_count }}</h3>
+                        <h3 class="text-right text-red-600">Date de sortie de l'article : {{ $article->created_at->diffForHumans() }}</h3>
                         </a>
                     @endforeach
                 </div>
