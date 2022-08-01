@@ -22,13 +22,14 @@ class CommentFactory extends Factory
             return [
                 'pseudo' => $this->faker->name(),
                 'email' => $this->faker->email(),
-                'content' => $this->faker->text(2000),
+                'content' => $this->faker->text(1000),
                 'article_id' => Article::inRandomOrder()->first(),
             ];
         } else {
             return [
+                'pseudo' => $this->faker->name(),
                 'user_id' => User::inRandomOrder()->first(),
-                'content' => $this->faker->text(2000),
+                'content' => $this->faker->text(1000),
                 'article_id' => Article::inRandomOrder()->first(),
             ];
         }
