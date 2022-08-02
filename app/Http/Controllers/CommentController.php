@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
-use http\Client\Curl\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
-class ArticleController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,29 +26,45 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('comment.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-
+        $validated = $request->validate([
+            'article_id' => 'required|exists:App\Models\Article,id',
+            'pseudo' => Rule::requiredIf(!Auth::check()),
+            'email' => [Rule::requiredIf(!Auth::check()), 'email'],
+            'content' => 'required|max:2000'
+        ]);
+        $comment = new Comment;
+        $comment->article_id = $validated['article_id'];
+        if (Auth::check()) {
+            $comment->user_id = Auth::id();
+        } else {
+            $comment->pseudo = $validated['pseudo'];
+            $comment->email = $validated['email'];
+        }
+        $comment->content = $validated['content'];
+        $comment->save();
+        return back();
     }
 
     /**
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Http\Response
      */
-    public function show(Article $article)
+    public function show($id)
     {
-        return view('article', ['article' => $article]);
+        //
     }
 
     /**
