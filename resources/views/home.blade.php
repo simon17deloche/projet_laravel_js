@@ -2,15 +2,17 @@
     <div class="py-12 bg-white">
         <div class="bg-gray-100 justify-center text-2xl"
              style=" display: flex; justify-content: space-between;  padding-bottom: 20px; padding-top: 20px; position: sticky; top: 0">
-            <div style="margin-left: 20%">Articles</div>
-            <div>Se connecter</div>
-            <div style="margin-right: 20%;">S'enregistrer</div>
+            <div style="margin-left: 20%"><a href="/">Articles</a>
+            </div>
+            <div>
+                <a href="/login">Se connecter</a>
+            </div>
+            <div style="margin-right: 20%;"><a href="/register">S'enregistrer</a></div>
         </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200" style="">
                     <h1 class="text-6xl text-center mb-10">Les Articles</h1>
-
                     @foreach($articles as $article)
                         <a href="{{ route('article.show',$article) }}"
                            class="bg-gray-100 mb-8 rounded-lg group block rounded-lg p-6 bg-white ring-1 ring-slate-900/5

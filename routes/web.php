@@ -25,7 +25,7 @@ Route::get('/article/{article}', [ArticleController::class, 'show'])->name('arti
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['auth'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['auth','admin'])->name('dashboard');
 });
 
 

@@ -4,7 +4,6 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
     <div class=" mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
@@ -30,7 +29,7 @@
 
                             <th class="p-2 border-r cursor-pointer text-sm font-thin text-gray-500">
                                 <div class="flex items-center justify-center">
-                                    Action
+                                    Actions
                                 </div>
                             </th>
                         </tr>
@@ -45,9 +44,9 @@
                                 <td class="p-2 border-r">{{ $article->user->name }}</td>
                                 <td>
                                     <a href="#"
-                                       class="bg-blue-500 p-2 text-white hover:shadow-lg">Edit</a>
+                                       class="bg-blue-500 p-2 text-white hover:shadow-lg">Modifier</a>
                                     <a href="#"
-                                       class="bg-red-500 p-2 text-white hover:shadow-lg">Remove</a>
+                                       class="bg-red-500 p-2 text-white hover:shadow-lg">Supprimer</a>
                                 </td>
                             </tr>
                         @endforeach
