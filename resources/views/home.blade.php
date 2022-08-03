@@ -2,16 +2,20 @@
     <div class="py-12 bg-white">
         <div class="bg-gray-100 justify-center text-2xl"
              style=" display: flex; justify-content: space-between;  padding-bottom: 20px; padding-top: 20px; position: sticky; top: 0">
-            <div style="margin-left: 20%"><a href="/">Articles</a>
-            </div>
-            <div>
-                <a href="/login">Se connecter</a>
-            </div>
-            <div style="margin-right: 20%;"><a href="/register">S'enregistrer</a></div>
+            @if(!\Illuminate\Support\Facades\Auth::user())
+                <div style="margin-left: 20%"><a href="/">Articles</a></div>
+                <div><a href="/login">Se connecter</a></div>
+                <div style="margin-right: 20%;"><a href="/register">S'enregistrer</a></div>
+            @endif
+            @if(\Illuminate\Support\Facades\Auth::user())
+                <div style="margin-left: 20%"><a href="/">Articles</a></div>
+                <div><a href="/dashboard">DashBoard</a></div>
+                <div style="margin-right: 20%"><a href="{{ Auth::logout() }}">Se déconnecter</a></div>
+            @endif
         </div>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200" style="">
+                <div class="p-6 bg-white border-b border-gray-200">
                     <h1 class="text-6xl text-center mb-10">Les Articles</h1>
                     @foreach($articles as $article)
                         <a href="{{ route('article.show',$article) }}"
