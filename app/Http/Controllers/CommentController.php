@@ -41,7 +41,7 @@ class CommentController extends Controller
             'article_id' => 'required|exists:App\Models\Article,id',
             'pseudo' => Rule::requiredIf(!Auth::check()),
             'email' => [Rule::requiredIf(!Auth::check()), 'email'],
-            'content' => 'required|max:2000'
+            'content' => 'required|string|max:2000'
         ]);
         $comment = new Comment;
         $comment->article_id = $validated['article_id'];

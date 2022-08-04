@@ -43,13 +43,13 @@ class User extends Authenticatable
         'is_admin' => 'boolean',
     ];
 
-    public function article()
+    public function articles()
     {
-        return $this->belongsTo(Article::class);
+        return $this->hasMany(Article::class);
     }
 
-    public function comment()
+    public function comments()
     {
-        return $this->belongsTo(Comment::class);
+        return $this->hasMany(Comment::class);
     }
 }

@@ -20,6 +20,6 @@ class IsAdmin
          if ($user->is_admin) {
              return $next($request);
          }
-         abort(403);
+         return redirect('/');
     }
 }

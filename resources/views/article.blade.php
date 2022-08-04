@@ -28,26 +28,28 @@
             @endforeach
             <h1 id="commentaire" class="text-6xl text-center">Poster un commentaire</h1>
             <div class="place-content-center content-center">
-                <form action="{{ route('comment.store') }}" method="post" class="bg-gray-200 mt-12 rounded-lg" style="margin-left: 25%; margin-right: 25%">
-                      @csrf
+                <form action="{{ route('comment.store') }}" method="post" class="bg-gray-200 mt-12 rounded-lg"
+                      style="margin-left: 25%; margin-right: 25%">
+                    @csrf
                     <div class="ml-16 mr-16">
                         <input type="hidden" name="article_id" value="{{ $article->id }}">
                         @guest()
-                        <br>
-                        <label for="name" class="mt-8"><strong>Votre pseudo</strong></label>
-                        <br>
-                        <input class="rounded-lg mb-4 @error('name') is-invalid @enderror" style="width: 100%;" type="text" name="pseudo" id="name"
-                               placeholder="Simon" required>
-                        <br>
-                        <label for="email" class="mt-8"><strong>Votre e-mail</strong></label>
-                        <br>
-                        <input class="rounded-lg mb-4" style="width: 100%;" type="email" name="email" id="email"
-                               placeholder="test@gmail.com" required>
+                            <br>
+                            <label for="name" class="mt-8"><strong>Votre pseudo</strong></label>
+                            <br>
+                            <input class="rounded-lg mb-4 @error('name') is-invalid @enderror" style="width: 100%;"
+                                   type="text" name="pseudo" id="name"
+                                   placeholder="Simon" required>
+                            <br>
+                            <label for="email" class="mt-8"><strong>Votre e-mail</strong></label>
+                            <br>
+                            <input class="rounded-lg mb-4" style="width: 100%;" type="email" name="email" id="email"
+                                   placeholder="test@gmail.com" required>
                         @endguest
                         <br>
                         <label for="text" class="mt-8"><strong>Votre commentaire</strong></label> <br>
                         <textarea id="comment" cols="" style="width: 100%" rows="5" name="content"
-                                  class="rounded-lg" required></textarea>
+                                  class="rounded-lg" required>{{ old('content') }}</textarea>
                         <br>
                         <input type="submit" class="text-2xl text-white mb-8 mt-8 rounded-lg bg-green-500"
                                style="width: 100%" value="Envoyer">
